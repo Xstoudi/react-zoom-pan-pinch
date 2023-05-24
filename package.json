@@ -1,5 +1,5 @@
 {
-  "name": "react-zoom-pan-pinch",
+  "name": "@stouder-io/react-zoom-pan-pinch",
   "version": "0.0.0",
   "description": "Zoom and pan html elements in easy way",
   "author": "prc5",
@@ -132,5 +132,9 @@
     "svg",
     "bounds",
     "context"
-  ]
+  ],
+  "volta": {
+    "node": "18.16.0",
+    "yarn": "4.0.0-rc.44"
+  }
 }
