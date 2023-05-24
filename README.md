@@ -63,9 +63,9 @@ Do you like this library? Try out other projects
 ## Installation
 
 ```bash
-npm install --save react-zoom-pan-pinch
+npm install --save @stouder-io/react-zoom-pan-pinch
 or
-yarn add react-zoom-pan-pinch
+yarn add @stouder-io/react-zoom-pan-pinch
 ```
 
 ## Examples
