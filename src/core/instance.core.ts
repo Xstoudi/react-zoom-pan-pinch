@@ -110,36 +110,35 @@ export class ZoomPanPinch {
 
   initializeWindowEvents = (): void => {
     const passive = makePassiveEventOption();
-    const currentDocument = this.wrapperComponent?.ownerDocument;
-    const currentWindow = currentDocument?.defaultView;
+    const currentDocument = this.wrapperComponent?.getRootNode() as HTMLElement;
+    const pageDocument = this.wrapperComponent?.ownerDocument;
+    const currentWindow = pageDocument?.defaultView;
+
     // Panning on window to allow panning when mouse is out of component wrapper
-    currentWindow?.addEventListener("mousedown", this.onPanningStart, passive);
-    currentWindow?.addEventListener("mousemove", this.onPanning, passive);
-    currentWindow?.addEventListener("mouseup", this.onPanningStop, passive);
+    currentDocument?.addEventListener("mousedown", this.onPanningStart, passive);
+    currentDocument?.addEventListener("mouseup", this.onPanningStop, passive);
     currentDocument?.addEventListener("mouseleave", this.clearPanning, passive);
+    document?.addEventListener("mouseleave", this.clearPanning, passive);
+
+    currentWindow?.addEventListener("mousemove", this.onPanning, passive);
     currentWindow?.addEventListener("keyup", this.setKeyUnPressed, passive);
     currentWindow?.addEventListener("keydown", this.setKeyPressed, passive);
   };
 
   cleanupWindowEvents = (): void => {
     const passive = makePassiveEventOption();
-    const currentDocument = this.wrapperComponent?.ownerDocument;
-    const currentWindow = currentDocument?.defaultView;
-    currentWindow?.removeEventListener(
-      "mousedown",
-      this.onPanningStart,
-      passive,
-    );
+    const currentDocument = this.wrapperComponent?.getRootNode() as HTMLElement;
+    const pageDocument = this.wrapperComponent?.ownerDocument;
+    const currentWindow = pageDocument?.defaultView;
+
+    currentDocument?.removeEventListener("mousedown", this.onPanningStart, passive);
+    currentDocument?.removeEventListener("mouseup", this.onPanningStop, passive);
+    currentDocument?.removeEventListener("mouseleave", this.clearPanning, passive);
+    document?.removeEventListener("mouseleave", this.clearPanning, passive);
+
     currentWindow?.removeEventListener("mousemove", this.onPanning, passive);
-    currentWindow?.removeEventListener("mouseup", this.onPanningStop, passive);
-    currentDocument?.removeEventListener(
-      "mouseleave",
-      this.clearPanning,
-      passive,
-    );
     currentWindow?.removeEventListener("keyup", this.setKeyUnPressed, passive);
     currentWindow?.removeEventListener("keydown", this.setKeyPressed, passive);
-    document.removeEventListener("mouseleave", this.clearPanning, passive);
 
     handleCancelAnimation(this);
     this.observer?.disconnect();
