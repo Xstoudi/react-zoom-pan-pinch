@@ -25,6 +25,9 @@
     "react": "*",
     "react-dom": "*"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/runtime": "^7.20.13",
