@@ -2,7 +2,7 @@
   "name": "@stouder-io/react-zoom-pan-pinch",
   "version": "0.0.0",
   "description": "Zoom and pan html elements in easy way",
-  "author": "prc5",
+  "author": "Xstoudi",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -105,7 +105,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prc5/react-zoom-pan-pinch.git"
+    "url": "https://github.com/Xstoudi/react-zoom-pan-pinch.git"
   },
   "eslintConfig": {
     "extends": [
